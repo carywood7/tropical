@@ -2059,3 +2059,103 @@ video { max-width: 100%; width: 100%; height: auto; }
     padding-top: 12px !important;
   }
 }
+/* Big horizontal gap between the two columns (independent of Bootstrap gutters) */
+#hero .hero-gap { row-gap: 2rem; } /* nice mobile spacing when stacked */
+
+@media (min-width: 992px) { /* lg+ */
+  /* Flex gap between columns */
+  #hero .hero-gap { column-gap: clamp(4rem, 6vw, 10rem) !important; }
+
+  /* Extra, in-case-someone-zeroed-out-gutters */
+  #hero .left-col { padding-right: clamp(1.5rem, 3vw, 3rem) !important; }
+  #hero .right-col { padding-left: clamp(1.5rem, 3vw, 3rem) !important; }
+
+  /* Nudge the card further away if you want even more space */
+  #hero .right-col .lead-form-card { margin-left: clamp(1rem, 3vw, 4rem) !important; }
+}
+
+@media (min-width: 1400px) { /* xl+ for really wide screens */
+  #hero .hero-gap { column-gap: clamp(6rem, 8vw, 14rem) !important; }
+}
+/* === Tune these to match your navbar sizes exactly === */
+:root{
+  --nav-h: 72px;                /* header height */
+  --container-max: 1200px;      /* same max width as navbar row */
+  --container-pad: 16px;        /* same left/right padding as navbar */
+  --hero-gap: clamp(5rem, 7vw, 12rem); /* big column gap on desktop */
+}
+
+/* Make hero start below the sticky header */
+#hero{
+  padding-top: calc(var(--nav-h) + 32px); /* extra breathing room under nav */
+}
+
+/* Match navbar container geometry */
+#hero .container{
+  max-width: var(--container-max);
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Column spacing + alignment */
+#hero .row{
+  align-items: flex-start;      /* start under the nav instead of vertically centered */
+  row-gap: 2rem;                /* nice mobile spacing */
+}
+
+@media (min-width: 992px){
+  #hero .row{ column-gap: var(--hero-gap); }
+
+  /* Left column width so the title block tucks neatly under the logo area */
+  #hero .left-col{
+    max-width: 560px;
+    padding-right: clamp(1.5rem, 3vw, 3rem);
+  }
+
+  /* Right column right-aligns the form so it sits under the top-right CTA */
+  #hero .right-col{
+    display: flex;
+    justify-content: flex-end;
+    padding-left: clamp(1.5rem, 3vw, 3rem);
+  }
+
+  /* Control the card width so it visually aligns with the “Book a Site Visit” button */
+  #hero .lead-form-card{
+    width: min(520px, 100%);
+  }
+}
+
+/* If something else is zeroing Bootstrap utilities, force it once: */
+@media (min-width: 992px){
+  #hero .row{ column-gap: var(--hero-gap) !important; }
+}
+/* Keep everything you already added EXCEPT the column-gap rules */
+/* --- Desktop layout & spacing (safe with Bootstrap grid) --- */
+@media (min-width: 992px){
+  /* Big horizontal spacing without causing wrapping */
+  #hero .row{
+    --bs-gutter-x: clamp(4rem, 6vw, 10rem);
+    flex-wrap: nowrap;                /* don't allow the right col to drop */
+    align-items: flex-start;          /* keep top-aligned under the navbar */
+  }
+
+  /* Let Bootstrap gutter do the spacing; just minor nudges */
+  #hero .left-col{
+    max-width: 560px;                 /* optional: keep text line-length nice */
+    padding-right: 0;                 /* gutter supplies spacing now */
+  }
+
+  #hero .right-col{
+    display: flex;
+    justify-content: flex-end;        /* form aligns under top-right CTA */
+    padding-left: 0;                  /* gutter supplies spacing now */
+  }
+
+  /* Form card sizing + a tiny visual nudge if you want it */
+  #hero .lead-form-card{
+    width: min(520px, 100%);
+    margin-left: clamp(0.5rem, 1.5vw, 1.5rem);
+  }
+}
