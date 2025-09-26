@@ -2031,3 +2031,31 @@ video { max-width: 100%; width: 100%; height: auto; }
     font-weight: 700;
   }
 }
+  @media (max-width: 991.98px){
+  .hero-section .container { padding-top: 20px !important; }
+}
+/* ==== Mobile: add space between sticky header and the first section ==== */
+@media (max-width: 991.98px){
+  :root{ --nav-height: 74px; }  /* match your mobile navbar height */
+
+  /* If the very next element after the header is the hero (any class/id) */
+  body > header.ts-navbar + section,
+  body > header.ts-navbar + div,
+  body > header.ts-navbar + main {
+    padding-top: calc(var(--nav-height) + 12px) !important;
+  }
+
+  /* Common hero selectors (covers most setups) */
+  #hero,
+  .hero,
+  .hero-section {
+    padding-top: calc(var(--nav-height) + 12px) !important;
+  }
+
+  /* If your hero uses a Bootstrap container, also pad that */
+  #hero .container:first-child,
+  .hero .container:first-child,
+  .hero-section .container:first-child {
+    padding-top: 12px !important;
+  }
+}
