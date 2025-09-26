@@ -556,7 +556,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
 <section id="hero" class="hero-section" style="position: relative; height: 100vh; overflow: hidden;">
   <!-- Hero Banner Image -->
   <img
-    src="assets/img/bannerimg.webp"
+    src="assets/img/herobanner.webp"
     class="ak-hero-bg"
     alt="Tropical Symphony Hero Image"
     style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 0; animation: zoomIn 20s ease-in-out infinite alternate;"
@@ -570,7 +570,8 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
 
   <!-- Hero Content -->
   <div class="container" style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center;">
-    <div class="row align-items-center w-100">
+   <div class="row align-items-center w-100 g-5 g-lg-6 g-xl-7">
+
 
       <!-- Left Column: Hero Text -->
       <div class="col-lg-6 col-md-12 mb-4 mb-lg-0 text-white">
@@ -1103,7 +1104,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
 
     <!-- CTA -->
     <div class="text-center">
-      <a href="#contact-form-redirect" class="common-btn anim-pulse" style="background-color:#b08d57; border-color:#b08d57; color:#fff; padding:12px 35px; font-size:1.1rem; border-radius:0.25rem;">
+      <a href="#lead-form" class="common-btn anim-pulse" style="background-color:#b08d57; border-color:#b08d57; color:#fff; padding:12px 35px; font-size:1.1rem; border-radius:0.25rem;">
         See the Homes in Person
       </a>
     </div>
@@ -1359,7 +1360,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="footer-contact">
       <h4>Contact Us</h4>
       <p>Email: ramya.k@elegantbuildersanddevelopers.com</p>
-      <p>Phone: + 91 91040 44545</p>
+      <p>Phone: +91 97395 15744</p>
       <p>Location: Sy. No. 52/1,52/2,
 Doddabettahalli- Yelahanka Main Road,
 Bangalore North Taluk,
@@ -1441,7 +1442,7 @@ Bangalore-560064</p>
 <a
   id="sticky-wa"
   class="sticky-fab wa"
-  href="https://wa.me/919008712945?text=Hi%21%20I%27m%20interested%20in%20Tropical%20Symphony.%20Please%20share%20details."
+  href="https://wa.me/919739515744?text=Hi%21%20I%27m%20interested%20in%20Tropical%20Symphony.%20Please%20share%20details."
   target="_blank"
   rel="noopener"
   aria-label="Chat on WhatsApp"
@@ -1464,7 +1465,7 @@ Bangalore-560064</p>
 
 <script>
   // === Set your WhatsApp number once (no + or spaces). Example: India -> 91XXXXXXXXXX
-  const WHATSAPP_NUMBER = '919008712945'; // ← replace with your number
+  const WHATSAPP_NUMBER = '919739515744'; // ← replace with your number
   const PREFILL_TEXT = encodeURIComponent('Hi! I\'m interested. Please share details.');
 
   const waLink = document.getElementById('wa-link');
@@ -1598,5 +1599,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   })();
 </script>
+<script>
+  (function () {
+    const NAV_H = parseInt(getComputedStyle(document.documentElement)
+                    .getPropertyValue('--nav-h')) || 72;
+    const EXTRA = 20; // breathing room
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (!el) return;
+        e.preventDefault();
+
+        const y = el.getBoundingClientRect().top + window.pageYOffset - (NAV_H + EXTRA);
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      });
+    });
+  })();
+</script>
+
   </body>
 </html>
